@@ -1,7 +1,3 @@
-name: Give permission for gradlew
-run: chmod +x gradlew
-
-
 name: Automation Tests
 
 on:
@@ -18,7 +14,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      
+
+      - name: Give execution permission for gradlew
+        run: chmod +x gradlew
+
       - name: Set up Java
         uses: actions/setup-java@v3
         with:
@@ -42,7 +41,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      
+
+      - name: Give execution permission for gradlew
+        run: chmod +x gradlew
+
       - name: Set up Java
         uses: actions/setup-java@v3
         with:
