@@ -1,4 +1,8 @@
-name: Automation Tests
+name: Beri izin eksekusi Gradle Wrapper
+run: chmod +x gradlew
+
+
+name: Pengujian Otomatisasi
 
 on:
   push:
@@ -9,50 +13,23 @@ on:
       - main
 
 jobs:
-  api-tests:
+  pengujian:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
       
-      - name: Set up Java
+      - name: Beri izin eksekusi Gradle Wrapper
+        run: chmod +x gradlew
+      
+      - name: Atur Java
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
       
-      - name: Install dependencies
+      - name: Instal dependensi
         run: ./gradlew dependencies
       
-      - name: Run API tests
-        run: ./gradlew test --tests "api.*"
-      
-      - name: Upload API test reports
-        uses: actions/upload-artifact@v4
-        with:
-          name: api-test-reports
-          path: build/reports/tests/test/
-
-  ui-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      
-      - name: Set up Java
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-      
-      - name: Install dependencies
-        run: ./gradlew dependencies
-      
-      - name: Run UI tests
-        run: ./gradlew test --tests "ui.*"
-      
-      - name: Upload UI test reports
-        uses: actions/upload-artifact@v4
-        with:
-          name: ui-test-reports
-          path: build/reports/tests/test/
+      - name: Jalankan pengujian
+        run: ./gradlew test
