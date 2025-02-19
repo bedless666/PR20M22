@@ -1,4 +1,4 @@
-name: Beri izin eksekusi Gradle Wrapper
+name: Give permission for gradlew
 run: chmod +x gradlew
 
 
